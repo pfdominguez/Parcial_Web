@@ -1,0 +1,53 @@
+@model IEnumerable<Parcial_Web.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Peliculas</h1>
+
+<p>
+    <a asp-action="Create">Crear Nueva Peli</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor.Apellido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@item.Id">Detalle</a> |
+                <a asp-action="Delete" class="btn btn-outline-primary" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

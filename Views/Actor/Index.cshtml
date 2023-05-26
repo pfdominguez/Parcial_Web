@@ -1,0 +1,41 @@
+@model IEnumerable<Parcial_Web.Models.Actor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Actores</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-outline-success" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" class="btn btn-outline-success" asp-route-id="@item.Id">Detalle</a> |
+                <a asp-action="Delete" class="btn btn-outline-success" asp-route-id="@item.Id">borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
